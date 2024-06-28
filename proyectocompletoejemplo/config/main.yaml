@@ -1,0 +1,33 @@
+defaults:
+  - process: process2
+  - model: model1
+  - _self_
+
+#Para la funcion Get_Data de Process.py
+raw: 
+  path: ../data/raw/Employee.csv
+
+#Para el guardado en la carpeta Processed
+processed:
+  dir: ../data/processed
+  X_train: 
+    name: X_train.csv
+    path: ${processed.dir}/${processed.X_train.name}
+  X_test:
+    name: X_test.csv
+    path: ${processed.dir}/${processed.X_test.name}
+  y_train: 
+    name: y_train.csv
+    path: ${processed.dir}/${processed.y_train.name}
+  y_test:
+    name: y_test.csv
+    path: ${processed.dir}/${processed.y_test.name}  
+
+#Para la Segunda Fase del archivo train_model
+model:
+  dir: ../models
+  name: xgboost
+  path: ${model.dir}/${model.name}
+
+#Para el EVALUATE
+mlflow_tracking_ui: http://127.0.0.1:5001/
